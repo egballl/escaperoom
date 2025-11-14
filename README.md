@@ -8,21 +8,6 @@ Navigate to the other side of the screen in the fewest steps while avoiding obst
 ## Game Commands
 - `help` or `?` - Display list of commands
 
-## Scoring System
-
-### Points Gained
-- **+10 points** - Pick up a prize
-- **+5 points** - Spring a trap
-- **+10 points** - Reach the far right wall
-- **+1 point** - Each movement action
-
-### Penalties (Points Lost)
-- **-10 points** - Try to pick up prize when none exists
-- **-5 points** - Try to spring trap when none exists
-- **-5 points** - Hit a wall
-- **-5 points** - Move off the grid
-- **-10 points** - Quit before reaching the end
-
 ## Files Required
 - `EscapeRoom.java` - Main game logic
 - `GameGUI.java` - Game board and graphics
@@ -47,4 +32,17 @@ Navigate to the other side of the screen in the fewest steps while avoiding obst
 - **Starting Position**: Top-left corner (15, 15)
 - **Goal**: Right side of the board
 
-Good luck escaping the room!
+## Scoring System
+
+### Points Gained
+- **+10 points** - Pick up a prize
+- **+5 points** - Spring a trap
+- **+10 points** - Reach the far right wall
+- **+1 point** - Each movement action
+
+### Penalties (Points Lost)
+- **-10 points** - Try to pick up prize when none exists
+- **-5 points** - Try to spring trap when none exists
+- **-5 points** - Hit a wall
+- **-5 points** - Move off the grid
+- **-10 points** - Quit before reaching the end
