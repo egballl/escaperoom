@@ -48,49 +48,64 @@ public class EscapeRoom
       // process user commands
       
       // Movement commands
-      if ("right r".indexOf(input) >= 0)
+      if (input.equals("right") || input.equals("r"))
       {
         score += game.movePlayer(m, 0);
+        score++; // increment score after every move
+        System.out.println("Current score: " + score);
       }
-      else if ("left l".indexOf(input) >= 0)
+      else if (input.equals("left") || input.equals("l"))
       {
         score += game.movePlayer(-m, 0);
+        score++; // increment score after every move
+        System.out.println("Current score: " + score);
       }
-      else if ("up u".indexOf(input) >= 0)
+      else if (input.equals("pickup") || input.equals("p"))
+      {
+        score += game.pickupPrize();
+        System.out.println("Current score: " + score);
+      }
+      else if (input.equals("up") || input.equals("u"))
       {
         score += game.movePlayer(0, -m);
+        score++; // increment score after every move
+        System.out.println("Current score: " + score);
       }
-      else if ("down d".indexOf(input) >= 0)
+      else if (input.equals("down") || input.equals("d"))
       {
         score += game.movePlayer(0, m);
+        score++; // increment score after every move
+        System.out.println("Current score: " + score);
       }
       
       // Jump commands
-      else if ("jump jr".indexOf(input) >= 0)
+      else if (input.equals("jump") || input.equals("jr"))
       {
         score += game.movePlayer(2*m, 0);
+        score++; // increment score after every move
+        System.out.println("Current score: " + score);
       }
-      else if ("jumpleft jl".indexOf(input) >= 0)
+      else if (input.equals("jumpleft") || input.equals("jl"))
       {
         score += game.movePlayer(-2*m, 0);
+        score++; // increment score after every move
+        System.out.println("Current score: " + score);
       }
-      else if ("jumpup ju".indexOf(input) >= 0)
+      else if (input.equals("jumpup") || input.equals("ju"))
       {
         score += game.movePlayer(0, -2*m);
+        score++; // increment score after every move
+        System.out.println("Current score: " + score);
       }
-      else if ("jumpdown jd".indexOf(input) >= 0)
+      else if (input.equals("jumpdown") || input.equals("jd"))
       {
         score += game.movePlayer(0, 2*m);
+        score++; // increment score after every move
+        System.out.println("Current score: " + score);
       }
       
-      // Pickup prize
-      else if ("pickup p".indexOf(input) >= 0)
-      {
-        score += game.pickupPrize();
-      }
-      
-      // Spring trap - check if trap exists first
-      else if ("spring".indexOf(input) >= 0)
+      // Check for trap at current location using .equals() method
+      else if (input.equals("spring"))
       {
         if (game.isTrap(0, 0))
         {
@@ -101,17 +116,20 @@ public class EscapeRoom
           System.out.println("THERE IS NO TRAP HERE TO SPRING");
           score -= 5;
         }
+        System.out.println("Current score: " + score);
       }
       
       // Replay
-      else if ("replay".indexOf(input) >= 0)
+      else if (input.equals("replay"))
       {
         score += game.replay();
-        System.out.println("Board reset! Steps: " + game.getSteps());
+        System.out.println("Board reset! Score: " + score + " Steps: " + game.getSteps());
+        score = 0; // reset score for new game
+        System.out.println("Current score: " + score);
       }
       
       // Help command
-      else if ("help ?".indexOf(input) >= 0)
+      else if (input.equals("help") || input.equals("?"))
       {
         System.out.println("\n COMMANDS");
         System.out.println("Movement:");
@@ -126,13 +144,14 @@ public class EscapeRoom
         System.out.println("  jumpdown, jd   - Jump down");
         System.out.println("Actions:");
         System.out.println("  pickup, p - Pick up prize");
+        System.out.println("  spring    - Spring a trap");
         System.out.println("  replay    - Reset board");
         System.out.println("  quit, q   - End game");
         System.out.println("  help, ?   - Show this message\n");
       }
       
       // quit
-      else if ("quit q".indexOf(input) >= 0)
+      else if (input.equals("quit") || input.equals("q"))
       {
         play = false;
       }
