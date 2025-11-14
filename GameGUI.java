@@ -96,6 +96,7 @@ public class GameGUI extends JComponent
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.add(this);
     frame.setVisible(true);
+    frame.setAlwaysOnTop(true);
     frame.setResizable(false); 
 
     // set default config
