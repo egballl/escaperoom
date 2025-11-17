@@ -47,6 +47,7 @@ public class GameGUI extends JComponent
   private int totalWalls;
   private Rectangle[] walls; 
   private Image prizeImage;
+  private Image trapImage;
   private int totalPrizes;
   private Rectangle[] prizes;
   private int totalTraps;
@@ -86,6 +87,13 @@ public class GameGUI extends JComponent
     } catch (Exception e) {
      System.err.println("Could not open file player.png");
     }
+
+    try {
+      trapImage = ImageIO.read(new File("trap.png"));      
+    } catch (Exception e) {
+    System.err.println("Could not open file trap.png");
+    }
+
     // save player location
     playerLoc = new Point(x,y);
 
@@ -341,12 +349,11 @@ public class GameGUI extends JComponent
   {
 
     int win = playerAtEnd();
-  
-    // resize prizes and traps to "reactivate" them
-    for (Rectangle p: prizes)
-      p.setSize(SPACE_SIZE/3, SPACE_SIZE/3);
-    for (Rectangle t: traps)
-      t.setSize(SPACE_SIZE/3, SPACE_SIZE/3);
+
+    // instead of resizing prizes and traps, everything gets recreated
+    createTraps();
+    createPrizes();
+    createWalls();
 
     // move player to start of board
     x = START_LOC_X;
@@ -385,10 +392,13 @@ public class GameGUI extends JComponent
     // add (invisible) traps
     for (Rectangle t : traps)
     {
-      g2.setPaint(Color.WHITE); 
-      g2.fill(t);
+      if (t.getWidth() > 0)
+      {
+        int tx = (int)t.getX();
+        int ty = (int)t.getY();
+        g.drawImage(trapImage, tx, ty, null);
+      }
     }
-
     // add prizes
     for (Rectangle p : prizes)
     {
