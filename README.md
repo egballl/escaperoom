@@ -1,6 +1,9 @@
 # EscapeRoom Game
 
-![Recording2025-11-14112609-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/dc53ed34-3c5c-400b-b6d0-eb1009bf928f)
+
+https://github.com/user-attachments/assets/2c2efcb0-f399-4fa3-adde-f2fbdbf561c9
+
+
 
 ## Overview
 Navigate to the other side of the screen (right wall) in the fewest steps while avoiding walls and collecting prizes.
