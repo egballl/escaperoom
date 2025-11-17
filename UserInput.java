@@ -31,18 +31,18 @@ import java.util.Scanner;
     {
         String input = "";
         boolean valid = false;
-        do
-        {
             input = getLine().toLowerCase();
             for(String str : validInputs)
             {
-                if(input.equals(str.toLowerCase()))
+                if(input.equals(str.toLowerCase())){
                     valid = true;
+                    return input;
+                }
             }
-            if(!valid)
+            if(!valid){
                 System.out.print("Invalid input. Please try again\n>");
+                return "INVALID";
         }
-        while(!valid);
         return input;
     }
     
