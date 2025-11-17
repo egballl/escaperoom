@@ -26,9 +26,7 @@ public class EscapeRoom
 
     // size of move
     int m = 60; 
-    // individual player moves
-    int px = 0;
-    int py = 0; 
+
     
     int score = 0;
 
