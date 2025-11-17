@@ -35,7 +35,7 @@ public class EscapeRoom
     Scanner in = new Scanner(System.in);
     String[] validCommands = { "right", "left", "up", "down", "r", "l", "u", "d",
     "jump", "jr", "jumpleft", "jl", "jumpup", "ju", "jumpdown", "jd",
-    "pickup", "p", "quit", "q", "replay", "help", "?"};
+    "pickup", "p", "quit", "q", "replay", "help", "?", "spring" };
   
     // set up game
     boolean play = true;
@@ -45,19 +45,27 @@ public class EscapeRoom
       System.out.print("Enter command: ");
       String input = UserInput.getValidInput(validCommands);
 
+      // invalid input check
+      if (input.equals("INVALID"))
+      {
+        System.out.println("Command Invalid!  You lose 3 points.");
+        score -= 3;
+        System.out.println("Current score: " + score);
+      }
+
       // process user commands
       
       // Movement commands
-      if (input.equals("right") || input.equals("r"))
+      else if (input.equals("right") || input.equals("r"))
       {
         score += game.movePlayer(m, 0);
-        score++; // increment score after every move
+        score--; 
         System.out.println("Current score: " + score);
       }
       else if (input.equals("left") || input.equals("l"))
       {
         score += game.movePlayer(-m, 0);
-        score++; // increment score after every move
+        score--; 
         System.out.println("Current score: " + score);
       }
       else if (input.equals("pickup") || input.equals("p"))
@@ -68,13 +76,13 @@ public class EscapeRoom
       else if (input.equals("up") || input.equals("u"))
       {
         score += game.movePlayer(0, -m);
-        score++; // increment score after every move
+        score--; 
         System.out.println("Current score: " + score);
       }
       else if (input.equals("down") || input.equals("d"))
       {
         score += game.movePlayer(0, m);
-        score++; // increment score after every move
+        score--; 
         System.out.println("Current score: " + score);
       }
       
@@ -82,25 +90,25 @@ public class EscapeRoom
       else if (input.equals("jump") || input.equals("jr"))
       {
         score += game.movePlayer(2*m, 0);
-        score++; // increment score after every move
+        score--; 
         System.out.println("Current score: " + score);
       }
       else if (input.equals("jumpleft") || input.equals("jl"))
       {
         score += game.movePlayer(-2*m, 0);
-        score++; // increment score after every move
+        score--; 
         System.out.println("Current score: " + score);
       }
       else if (input.equals("jumpup") || input.equals("ju"))
       {
         score += game.movePlayer(0, -2*m);
-        score++; // increment score after every move
+        score--; 
         System.out.println("Current score: " + score);
       }
       else if (input.equals("jumpdown") || input.equals("jd"))
       {
         score += game.movePlayer(0, 2*m);
-        score++; // increment score after every move
+        score--; 
         System.out.println("Current score: " + score);
       }
       
@@ -122,16 +130,16 @@ public class EscapeRoom
       // Replay
       else if (input.equals("replay"))
       {
+        int steps = game.getSteps();
         score += game.replay();
-        System.out.println("Board reset! Score: " + score + " Steps: " + game.getSteps());
+        System.out.println("Board reset! Score: " + score + " Steps: " + steps);
         score = 0; // reset score for new game
-        System.out.println("Current score: " + score);
       }
       
-      // Help command
+      // Help
       else if (input.equals("help") || input.equals("?"))
       {
-        System.out.println("\n COMMANDS");
+        System.out.println("COMMANDS");
         System.out.println("Movement:");
         System.out.println("  right, r  - Move right");
         System.out.println("  left, l   - Move left");
